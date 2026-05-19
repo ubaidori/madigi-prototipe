@@ -224,14 +224,996 @@
           </div>
 
           <div class="mt-5 rounded-2xl border border-gray-200 bg-[repeating-linear-gradient(135deg,#fafafa_0,#fafafa_4px,#f1f1f1_4px,#f1f1f1_6px)] p-6 md:min-h-[420px]">
-            <div class="rounded-xl bg-white/70 p-5">
-              <p class="text-sm font-semibold text-gray-500">
-                Area ringkasan aktivitas akan digunakan untuk menampilkan jadwal dan status absensi pada prototype.
-              </p>
+            <div class="rounded-xl bg-white/80 p-5">
+              <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                <div>
+                  <p class="text-sm font-semibold uppercase tracking-wide text-gray-500">
+                    Jadwal Mengajar Hari Ini
+                  </p>
+                  <h2 class="mt-2 text-xl font-bold text-gray-900">
+                    AWWALIYAH 2-1 Putra
+                  </h2>
+                  <p class="mt-1 text-sm text-gray-500">
+                    Nahwu - Imrithi • 05:30 - 06:30
+                  </p>
+                </div>
+
+                <span
+                  id="dashboardAttendanceStatus"
+                  class="w-fit rounded-full bg-amber-100 px-4 py-2 text-sm font-bold text-amber-700"
+                >
+                  Belum Diabsen
+                </span>
+              </div>
+
+              <div
+                id="dashboardAttendanceSummary"
+                class="mt-5 hidden rounded-xl border border-emerald-100 bg-emerald-50 p-4"
+              >
+                <p class="text-sm font-semibold text-emerald-800">
+                  Absensi sudah disimpan
+                </p>
+                <div class="mt-3 grid grid-cols-4 gap-2 text-center text-xs font-semibold">
+                  <div class="rounded-lg bg-white px-2 py-2 text-emerald-700">
+                    Hadir 22
+                  </div>
+                  <div class="rounded-lg bg-white px-2 py-2 text-blue-700">
+                    Izin 1
+                  </div>
+                  <div class="rounded-lg bg-white px-2 py-2 text-amber-700">
+                    Sakit 1
+                  </div>
+                  <div class="rounded-lg bg-white px-2 py-2 text-rose-700">
+                    Alpha 1
+                  </div>
+                </div>
+              </div>
+
+              <button
+                id="dashboardStartAttendanceButton"
+                type="button"
+                class="mt-5 h-11 rounded-lg bg-madigi-green px-5 text-sm font-semibold text-white shadow-sm hover:bg-madigi-dark"
+              >
+                Mulai Absensi
+              </button>
             </div>
           </div>
         </section>
+        <section id="attendanceEmptyScreen" class="hidden">
+          <div class="mb-7">
+            <h1 class="text-3xl font-semibold tracking-tight text-gray-900">
+              Absensi Siswa
+            </h1>
+            <p class="mt-3 max-w-xl text-base leading-relaxed text-gray-500">
+              Kelola Absensi Siswa: Lihat, Buat, Edit, dan hapus absensi di sistem
+            </p>
+          </div>
+
+          <div class="mb-6 border-t border-gray-100 pt-6">
+            <div class="flex flex-wrap gap-3">
+              <button
+                type="button"
+                class="inline-flex h-11 items-center gap-3 rounded-lg border border-gray-200 bg-white px-4 text-sm font-semibold text-gray-800 shadow-sm hover:bg-gray-50"
+              >
+                <span class="text-gray-500">⌄</span>
+                <span>Pilih Tingkat</span>
+              </button>
+
+              <button
+                type="button"
+                class="inline-flex h-11 items-center gap-3 rounded-lg border border-gray-200 bg-white px-4 text-sm font-semibold text-gray-800 shadow-sm hover:bg-gray-50"
+              >
+                <span class="text-gray-500">⌄</span>
+                <span>Putra/Putri</span>
+              </button>
+
+              <button
+                id="selectClassButton"
+                type="button"
+                class="inline-flex h-11 items-center gap-3 rounded-lg border border-gray-200 bg-white px-4 text-sm font-semibold text-gray-800 shadow-sm hover:bg-gray-50"
+              >
+                <span class="text-gray-500">⌄</span>
+                <span>Pilih Kelas</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="rounded-xl border border-gray-200 bg-white p-6 md:p-10">
+            <div class="mx-auto flex max-w-md flex-col items-center justify-center py-10 text-center md:py-16">
+              <div class="mb-7 flex h-12 w-12 items-center justify-center rounded-full bg-madigi-soft text-2xl text-madigi-green">
+                ↑
+              </div>
+
+              <h2 class="text-xl font-bold leading-snug text-gray-900">
+                Pilih kelas dari menu di atas terlebih dahulu
+              </h2>
+
+              <p class="mt-4 text-sm leading-6 text-gray-600">
+                untuk melihat dan mengelola absensi santri.
+              </p>
+
+              <div class="mt-8 rounded-xl border border-emerald-100 bg-emerald-50 px-5 py-4 text-left">
+                <p class="text-sm leading-6 text-gray-700">
+                  <span class="font-bold text-madigi-green">Tips:</span>
+                  Kelas bisa difilter dengan Tingkat atau Putra/putri untuk menemukannya dengan lebih cepat.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="attendanceClassScreen" class="hidden">
+          <div class="mb-7">
+            <h1 class="text-3xl font-semibold tracking-tight text-gray-900">
+              Absensi Siswa
+            </h1>
+            <p class="mt-3 max-w-xl text-base leading-relaxed text-gray-500">
+              Kelola Absensi Siswa: Lihat, Buat, Edit, dan hapus absensi di sistem
+            </p>
+          </div>
+
+          <div class="mb-6 border-t border-gray-100 pt-6">
+            <div class="flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                class="inline-flex h-11 items-center gap-3 rounded-lg border border-gray-200 bg-white px-4 text-sm font-semibold text-gray-800 shadow-sm hover:bg-gray-50"
+              >
+                <span class="text-gray-500">⌄</span>
+                <span>AWWALIYAH</span>
+              </button>
+
+              <button
+                type="button"
+                class="inline-flex h-11 items-center gap-3 rounded-lg border border-gray-200 bg-white px-4 text-sm font-semibold text-gray-800 shadow-sm hover:bg-gray-50"
+              >
+                <span class="text-gray-500">⌄</span>
+                <span>Putra</span>
+              </button>
+
+              <button
+                type="button"
+                class="inline-flex h-11 items-center gap-3 rounded-lg border border-gray-200 bg-white px-4 text-sm font-semibold text-gray-800 shadow-sm hover:bg-gray-50"
+              >
+                <span class="text-gray-500">⌄</span>
+                <span>AWWALIYAH 2-1 putra</span>
+              </button>
+
+              <div class="flex items-center gap-2">
+                <button
+                  type="button"
+                  class="flex h-11 w-11 items-center justify-center rounded-lg border border-gray-200 bg-white text-lg font-semibold text-gray-600 shadow-sm hover:bg-gray-50"
+                >
+                  ‹
+                </button>
+
+                <button
+                  type="button"
+                  class="inline-flex h-11 items-center rounded-lg border border-gray-200 bg-white px-5 text-sm font-semibold text-gray-800 shadow-sm"
+                >
+                  19 / 05 / 2026
+                </button>
+
+                <button
+                  type="button"
+                  class="flex h-11 w-11 items-center justify-center rounded-lg border border-gray-200 bg-white text-lg font-semibold text-gray-600 shadow-sm hover:bg-gray-50"
+                >
+                  ›
+                </button>
+              </div>
+
+              <button
+                type="button"
+                class="inline-flex h-11 items-center gap-2 rounded-lg bg-madigi-green px-5 text-sm font-semibold text-white shadow-sm hover:bg-madigi-dark"
+              >
+                <span>▣</span>
+                <span>Download</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="overflow-hidden rounded-xl border border-gray-100 bg-white">
+            <div class="overflow-x-auto">
+              <table class="min-w-[920px] w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr class="bg-gray-50 text-xs font-bold uppercase text-gray-700">
+                    <th class="w-[260px] px-6 py-5 align-middle">
+                      Nama Santri
+                    </th>
+                    <th class="px-6 py-5 align-top">
+                      <div class="max-w-[150px] leading-tight">
+                        <p>05:30 - 06:30</p>
+                        <p>NAHWU - IMRITHI</p>
+                        <p>UST. MOH. ANWAR</p>
+                        <button
+                          id="startAttendanceButton"
+                          type="button"
+                          class="mt-3 rounded-lg bg-gray-100 px-4 py-2 text-sm font-semibold normal-case text-gray-800 hover:bg-gray-200"
+                        >
+                          Isi Absensi
+                        </button>
+                      </div>
+                    </th>
+                    <th class="px-6 py-5 align-top">
+                      <div class="max-w-[150px] leading-tight">
+                        <p>15:30 - 16:30</p>
+                        <p>AL - QUR'AN</p>
+                        <p>UST. MOH. ANWAR</p>
+                        <button
+                          type="button"
+                          class="mt-3 rounded-lg bg-gray-100 px-4 py-2 text-sm font-semibold normal-case text-gray-800 hover:bg-gray-200"
+                        >
+                          Isi Absensi
+                        </button>
+                      </div>
+                    </th>
+                    <th class="px-6 py-5 align-top">
+                      <div class="max-w-[150px] leading-tight">
+                        <p>20:30 - 22:00</p>
+                        <p>FIQIH - FATHUL QARIB</p>
+                        <p>UST. MOH. ANWAR</p>
+                        <button
+                          type="button"
+                          class="mt-3 rounded-lg bg-gray-100 px-4 py-2 text-sm font-semibold normal-case text-gray-800 hover:bg-gray-200"
+                        >
+                          Isi Absensi
+                        </button>
+                      </div>
+                    </th>
+                    <th class="px-6 py-5 align-top">
+                      <div class="max-w-[150px] leading-tight">
+                        <p>20:30 - 22:00</p>
+                        <p>FIQIH - FATHUL QARIB</p>
+                        <p>UST. MOH. ANWAR</p>
+                        <button
+                          type="button"
+                          class="mt-3 rounded-lg bg-gray-100 px-4 py-2 text-sm font-semibold normal-case text-gray-800 hover:bg-gray-200"
+                        >
+                          Isi Absensi
+                        </button>
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody class="divide-y divide-gray-100 text-gray-900">
+                  <tr>
+                    <td class="px-6 py-5 font-semibold">Moh. Kafa Alal Mubarok</td>
+                    <td class="px-6 py-5">
+                      <span class="rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+                        Hadir
+                      </span>
+                    </td>
+                    <td class="px-6 py-5">
+                      <span class="rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+                        Hadir
+                      </span>
+                    </td>
+                    <td class="px-6 py-5">
+                      <span class="rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-semibold text-gray-500">
+                        -
+                      </span>
+                    </td>
+                    <td class="px-6 py-5">
+                      <span class="rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-semibold text-gray-500">
+                        -
+                      </span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="px-6 py-5 font-semibold">Imam Robbani</td>
+                    <td class="px-6 py-5">
+                      <span class="rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+                        Hadir
+                      </span>
+                    </td>
+                    <td class="px-6 py-5">
+                      <span class="rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+                        Hadir
+                      </span>
+                    </td>
+                    <td class="px-6 py-5">
+                      <span class="rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-semibold text-gray-500">
+                        -
+                      </span>
+                    </td>
+                    <td class="px-6 py-5">
+                      <span class="rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-semibold text-gray-500">
+                        -
+                      </span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="px-6 py-5 font-semibold">Syaiful Anwar</td>
+                    <td class="px-6 py-5">
+                      <span class="rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+                        Hadir
+                      </span>
+                    </td>
+                    <td class="px-6 py-5">
+                      <span class="rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+                        Hadir
+                      </span>
+                    </td>
+                    <td class="px-6 py-5">
+                      <span class="rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-semibold text-gray-500">
+                        -
+                      </span>
+                    </td>
+                    <td class="px-6 py-5">
+                      <span class="rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-semibold text-gray-500">
+                        -
+                      </span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="px-6 py-5 font-semibold">Akhsabul Khasby</td>
+                    <td class="px-6 py-5">
+                      <span class="rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+                        Hadir
+                      </span>
+                    </td>
+                    <td class="px-6 py-5">
+                      <span class="rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+                        Hadir
+                      </span>
+                    </td>
+                    <td class="px-6 py-5">
+                      <span class="rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-semibold text-gray-500">
+                        -
+                      </span>
+                    </td>
+                    <td class="px-6 py-5">
+                      <span class="rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-semibold text-gray-500">
+                        -
+                      </span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="px-6 py-5 font-semibold">Moh. Iqbal Dhaifullah</td>
+                    <td class="px-6 py-5">
+                      <span class="rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+                        Hadir
+                      </span>
+                    </td>
+                    <td class="px-6 py-5">
+                      <span class="rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+                        Hadir
+                      </span>
+                    </td>
+                    <td class="px-6 py-5">
+                      <span class="rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-semibold text-gray-500">
+                        -
+                      </span>
+                    </td>
+                    <td class="px-6 py-5">
+                      <span class="rounded-lg bg-gray-100 px-3 py-1.5 text-sm font-semibold text-gray-500">
+                        -
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="attendanceIntegratedScreen" class="hidden">
+          <div class="mb-7">
+            <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+              <div>
+                <h1 class="text-3xl font-semibold tracking-tight text-gray-900">
+                  Isi Absensi
+                </h1>
+                <p class="mt-3 max-w-xl text-base leading-relaxed text-gray-500">
+                  AWWALIYAH 2-1 Putra • Nahwu - Imrithi • 05:30 - 06:30
+                </p>
+              </div>
+
+              <button
+                id="statusHelpButton"
+                type="button"
+                class="inline-flex h-10 items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50"
+              >
+                <span class="flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-xs">?</span>
+                <span>Panduan Status</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="mb-6 grid gap-4 md:grid-cols-4">
+            <div class="rounded-xl border border-emerald-100 bg-emerald-50 p-4">
+              <p class="text-sm font-semibold text-emerald-700">Hadir</p>
+              <p class="mt-2 text-2xl font-bold text-emerald-900">22</p>
+            </div>
+
+            <div class="rounded-xl border border-blue-100 bg-blue-50 p-4">
+              <p class="text-sm font-semibold text-blue-700">Izin</p>
+              <p class="mt-2 text-2xl font-bold text-blue-900">1</p>
+            </div>
+
+            <div class="rounded-xl border border-amber-100 bg-amber-50 p-4">
+              <p class="text-sm font-semibold text-amber-700">Sakit</p>
+              <p class="mt-2 text-2xl font-bold text-amber-900">1</p>
+            </div>
+
+            <div class="rounded-xl border border-rose-100 bg-rose-50 p-4">
+              <p class="text-sm font-semibold text-rose-700">Alpha</p>
+              <p class="mt-2 text-2xl font-bold text-rose-900">1</p>
+            </div>
+          </div>
+
+          <div class="grid gap-6 lg:grid-cols-[1fr_320px]">
+            <!-- DAFTAR ABSENSI -->
+            <div class="overflow-hidden rounded-xl border border-gray-200 bg-white">
+              <div class="border-b border-gray-100 px-5 py-4">
+                <h2 class="text-base font-bold text-gray-900">
+                  Daftar Santri
+                </h2>
+                <p class="mt-1 text-sm text-gray-500">
+                  Status izin/sakit ditampilkan langsung berdasarkan data perizinan.
+                </p>
+              </div>
+
+              <div class="divide-y divide-gray-100">
+                <!-- Santri 1 -->
+                <div class="grid gap-4 px-5 py-4 md:grid-cols-[1fr_220px_120px] md:items-center">
+                  <div>
+                    <p class="font-semibold text-gray-900">Moh. Kafa Alal Mubarok</p>
+                    <p class="mt-1 text-sm text-gray-500">Tidak ada catatan perizinan</p>
+                  </div>
+
+                  <select class="h-11 rounded-lg border border-gray-200 bg-white px-3 text-sm font-medium text-gray-800 outline-none focus:border-madigi-green focus:ring-4 focus:ring-madigi-green/10">
+                    <option>Hadir</option>
+                    <option>Izin</option>
+                    <option>Sakit</option>
+                    <option>Alpha</option>
+                  </select>
+
+                  <div class="text-left md:text-right">
+                    <span class="rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+                      Hadir
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Santri 2 Izin -->
+                <div class="grid gap-4 bg-blue-50/40 px-5 py-4 md:grid-cols-[1fr_220px_120px] md:items-center">
+                  <div>
+                    <div class="flex flex-wrap items-center gap-2">
+                      <p class="font-semibold text-gray-900">M. Fauzan</p>
+                      <span class="rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-700">
+                        Izin
+                      </span>
+                    </div>
+                    <p class="mt-1 text-sm text-gray-500">
+                      Izin pulang karena keperluan keluarga
+                    </p>
+                  </div>
+
+                  <select class="h-11 rounded-lg border border-blue-200 bg-white px-3 text-sm font-medium text-gray-800 outline-none focus:border-madigi-green focus:ring-4 focus:ring-madigi-green/10">
+                    <option>Izin</option>
+                    <option>Hadir</option>
+                    <option>Sakit</option>
+                    <option>Alpha</option>
+                  </select>
+
+                  <div class="text-left md:text-right">
+                    <button
+                      type="button"
+                      class="open-permit-detail rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50"
+                      data-name="M. Fauzan"
+                      data-status="Izin"
+                      data-note="Izin pulang karena keperluan keluarga"
+                      data-source="Pengurus Keamanan"
+                    >
+                      Detail
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Santri 3 -->
+                <div class="grid gap-4 px-5 py-4 md:grid-cols-[1fr_220px_120px] md:items-center">
+                  <div>
+                    <p class="font-semibold text-gray-900">Imam Robbani</p>
+                    <p class="mt-1 text-sm text-gray-500">Tidak ada catatan perizinan</p>
+                  </div>
+
+                  <select class="h-11 rounded-lg border border-gray-200 bg-white px-3 text-sm font-medium text-gray-800 outline-none focus:border-madigi-green focus:ring-4 focus:ring-madigi-green/10">
+                    <option>Hadir</option>
+                    <option>Izin</option>
+                    <option>Sakit</option>
+                    <option>Alpha</option>
+                  </select>
+
+                  <div class="text-left md:text-right">
+                    <span class="rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+                      Hadir
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Santri 4 Sakit -->
+                <div class="grid gap-4 bg-amber-50/50 px-5 py-4 md:grid-cols-[1fr_220px_120px] md:items-center">
+                  <div>
+                    <div class="flex flex-wrap items-center gap-2">
+                      <p class="font-semibold text-gray-900">Abdul Halim</p>
+                      <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-700">
+                        Sakit
+                      </span>
+                    </div>
+                    <p class="mt-1 text-sm text-gray-500">
+                      Sakit di kamar dan sudah dicatat pengurus kesehatan
+                    </p>
+                  </div>
+
+                  <select class="h-11 rounded-lg border border-amber-200 bg-white px-3 text-sm font-medium text-gray-800 outline-none focus:border-madigi-green focus:ring-4 focus:ring-madigi-green/10">
+                    <option>Sakit</option>
+                    <option>Hadir</option>
+                    <option>Izin</option>
+                    <option>Alpha</option>
+                  </select>
+
+                  <div class="text-left md:text-right">
+                    <button
+                      type="button"
+                      class="open-permit-detail rounded-lg border border-amber-200 bg-white px-3 py-2 text-sm font-semibold text-amber-700 hover:bg-amber-50"
+                      data-name="Abdul Halim"
+                      data-status="Sakit"
+                      data-note="Sakit di kamar dan sudah dicatat pengurus kesehatan"
+                      data-source="Pengurus Kesehatan"
+                    >
+                      Detail
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Santri 5 Alpha -->
+                <div class="grid gap-4 px-5 py-4 md:grid-cols-[1fr_220px_120px] md:items-center">
+                  <div>
+                    <p class="font-semibold text-gray-900">Rafi Maulana</p>
+                    <p class="mt-1 text-sm text-gray-500">Tidak ditemukan data izin/sakit</p>
+                  </div>
+
+                  <select class="h-11 rounded-lg border border-gray-200 bg-white px-3 text-sm font-medium text-gray-800 outline-none focus:border-madigi-green focus:ring-4 focus:ring-madigi-green/10">
+                    <option>Alpha</option>
+                    <option>Hadir</option>
+                    <option>Izin</option>
+                    <option>Sakit</option>
+                  </select>
+
+                  <div class="text-left md:text-right">
+                    <span class="rounded-lg bg-rose-100 px-3 py-1.5 text-sm font-semibold text-rose-700">
+                      Alpha
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PANEL PERIZINAN -->
+            <aside class="rounded-xl border border-gray-200 bg-white p-5">
+              <h2 class="text-base font-bold text-gray-900">
+                Perizinan Hari Ini
+              </h2>
+              <p class="mt-1 text-sm leading-6 text-gray-500">
+                Ringkasan santri yang tercatat izin atau sakit oleh pengurus.
+              </p>
+
+              <div class="mt-5 space-y-3">
+                <div class="rounded-xl border border-blue-100 bg-blue-50 p-4">
+                  <div class="flex items-start justify-between gap-3">
+                    <div>
+                      <p class="font-semibold text-gray-900">M. Fauzan</p>
+                      <p class="mt-1 text-sm text-blue-700">Izin pulang</p>
+                    </div>
+                    <span class="rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-700">
+                      Izin
+                    </span>
+                  </div>
+                </div>
+
+                <div class="rounded-xl border border-amber-100 bg-amber-50 p-4">
+                  <div class="flex items-start justify-between gap-3">
+                    <div>
+                      <p class="font-semibold text-gray-900">Abdul Halim</p>
+                      <p class="mt-1 text-sm text-amber-700">Sakit di kamar</p>
+                    </div>
+                    <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-700">
+                      Sakit
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-5 rounded-xl border border-emerald-100 bg-emerald-50 px-4 py-3">
+                <p class="text-sm leading-6 text-gray-700">
+                  <span class="font-bold text-madigi-green">Catatan:</span>
+                  Data ini ditampilkan agar ustadz tidak perlu membuka halaman daftar perizinan secara terpisah.
+                </p>
+              </div>
+            </aside>
+          </div>
+
+          <div class="sticky bottom-0 mt-6 border-t border-gray-100 bg-white/90 py-4 backdrop-blur md:static md:border-0 md:bg-transparent md:py-0">
+            <div class="flex flex-col gap-3 md:flex-row md:justify-end">
+              <button
+                id="backToClassButton"
+                type="button"
+                class="h-11 rounded-lg border border-gray-200 bg-white px-5 text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50"
+              >
+                Kembali
+              </button>
+
+              <button
+                id="previewAttendanceButton"
+                type="button"
+                class="h-11 rounded-lg bg-madigi-green px-5 text-sm font-semibold text-white shadow-sm hover:bg-madigi-dark"
+              >
+                Preview Absensi
+              </button>
+            </div>
+          </div>
+        </section>
+
       </main>
+    </div>
+  </div>
+
+  <!-- MODAL DETAIL PERIZINAN -->
+  <div
+    id="permitDetailModal"
+    class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/40 px-4"
+  >
+    <div class="w-full max-w-md rounded-2xl bg-white shadow-xl">
+      <div class="flex items-start justify-between border-b border-gray-100 px-6 py-5">
+        <div>
+          <p class="text-sm font-semibold text-madigi-green">
+            Detail Perizinan
+          </p>
+          <h2 id="permitStudentName" class="mt-1 text-xl font-bold text-gray-900">
+            Nama Santri
+          </h2>
+        </div>
+
+        <button
+          id="closePermitModal"
+          type="button"
+          class="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100"
+          aria-label="Tutup detail perizinan"
+        >
+          ×
+        </button>
+      </div>
+
+      <div class="space-y-4 px-6 py-5">
+        <div class="rounded-xl border border-gray-100 bg-gray-50 p-4">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">
+            Status
+          </p>
+          <p id="permitStatus" class="mt-1 text-base font-bold text-gray-900">
+            -
+          </p>
+        </div>
+
+        <div class="rounded-xl border border-gray-100 bg-gray-50 p-4">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">
+            Tanggal
+          </p>
+          <p class="mt-1 text-base font-semibold text-gray-900">
+            19 Mei 2026
+          </p>
+        </div>
+
+        <div class="rounded-xl border border-gray-100 bg-gray-50 p-4">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">
+            Keterangan
+          </p>
+          <p id="permitNote" class="mt-1 text-sm leading-6 text-gray-700">
+            -
+          </p>
+        </div>
+
+        <div class="rounded-xl border border-emerald-100 bg-emerald-50 p-4">
+          <p class="text-xs font-semibold uppercase tracking-wide text-madigi-green">
+            Sumber Data
+          </p>
+          <p id="permitSource" class="mt-1 text-sm font-semibold text-gray-800">
+            -
+          </p>
+          <p class="mt-2 text-sm leading-6 text-gray-600">
+            Data ini berasal dari catatan pengurus sehingga ustadz dapat mengecek alasan ketidakhadiran tanpa membuka halaman daftar perizinan.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex justify-end gap-3 border-t border-gray-100 px-6 py-4">
+        <button
+          id="closePermitModalFooter"
+          type="button"
+          class="h-10 rounded-lg border border-gray-200 bg-white px-5 text-sm font-semibold text-gray-700 hover:bg-gray-50"
+        >
+          Tutup
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL PANDUAN STATUS -->
+  <div
+    id="statusHelpModal"
+    class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/40 px-4"
+  >
+    <div class="w-full max-w-md rounded-2xl bg-white shadow-xl">
+      <div class="flex items-start justify-between border-b border-gray-100 px-6 py-5">
+        <div>
+          <p class="text-sm font-semibold text-madigi-green">
+            Panduan Status
+          </p>
+          <h2 class="mt-1 text-xl font-bold text-gray-900">
+            Kode Kehadiran Santri
+          </h2>
+        </div>
+
+        <button
+          id="closeStatusHelpModal"
+          type="button"
+          class="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100"
+          aria-label="Tutup panduan status"
+        >
+          ×
+        </button>
+      </div>
+
+      <div class="space-y-3 px-6 py-5">
+        <div class="flex items-start gap-4 rounded-xl border border-emerald-100 bg-emerald-50 p-4">
+          <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-sm font-bold text-emerald-700">
+            H
+          </span>
+          <div>
+            <p class="font-bold text-gray-900">Hadir</p>
+            <p class="mt-1 text-sm leading-6 text-gray-600">
+              Digunakan ketika santri hadir di kelas.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 rounded-xl border border-blue-100 bg-blue-50 p-4">
+          <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-sm font-bold text-blue-700">
+            I
+          </span>
+          <div>
+            <p class="font-bold text-gray-900">Izin</p>
+            <p class="mt-1 text-sm leading-6 text-gray-600">
+              Digunakan ketika santri memiliki catatan izin dari pengurus.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 rounded-xl border border-amber-100 bg-amber-50 p-4">
+          <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-sm font-bold text-amber-700">
+            S
+          </span>
+          <div>
+            <p class="font-bold text-gray-900">Sakit</p>
+            <p class="mt-1 text-sm leading-6 text-gray-600">
+              Digunakan ketika santri tercatat sakit atau tidak mengikuti kelas karena kondisi kesehatan.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 rounded-xl border border-rose-100 bg-rose-50 p-4">
+          <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-rose-100 text-sm font-bold text-rose-700">
+            A
+          </span>
+          <div>
+            <p class="font-bold text-gray-900">Alpha</p>
+            <p class="mt-1 text-sm leading-6 text-gray-600">
+              Digunakan ketika santri tidak hadir dan tidak ditemukan data izin atau sakit.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-emerald-100 bg-emerald-50 px-4 py-3">
+          <p class="text-sm leading-6 text-gray-700">
+            <span class="font-bold text-madigi-green">Catatan:</span>
+            Jika terdapat label Izin atau Sakit pada nama santri, ustadz dapat menggunakan informasi tersebut sebagai acuan saat menentukan status absensi.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex justify-end border-t border-gray-100 px-6 py-4">
+        <button
+          id="closeStatusHelpModalFooter"
+          type="button"
+          class="h-10 rounded-lg bg-madigi-green px-5 text-sm font-semibold text-white hover:bg-madigi-dark"
+        >
+          Saya Mengerti
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL PREVIEW ABSENSI -->
+  <div
+    id="previewAttendanceModal"
+    class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/40 px-4"
+  >
+    <div class="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white shadow-xl">
+      <div class="flex items-start justify-between border-b border-gray-100 px-6 py-5">
+        <div>
+          <p class="text-sm font-semibold text-madigi-green">
+            Preview Absensi
+          </p>
+          <h2 class="mt-1 text-xl font-bold text-gray-900">
+            Periksa Data Sebelum Disimpan
+          </h2>
+          <p class="mt-2 text-sm leading-6 text-gray-500">
+            AWWALIYAH 2-1 Putra • Nahwu - Imrithi • 05:30 - 06:30
+          </p>
+        </div>
+
+        <button
+          id="closePreviewModal"
+          type="button"
+          class="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100"
+          aria-label="Tutup preview absensi"
+        >
+          ×
+        </button>
+      </div>
+
+      <div class="px-6 py-5">
+        <div class="grid gap-3 sm:grid-cols-4">
+          <div class="rounded-xl border border-emerald-100 bg-emerald-50 p-4">
+            <p class="text-sm font-semibold text-emerald-700">Hadir</p>
+            <p class="mt-2 text-2xl font-bold text-emerald-900">22</p>
+          </div>
+
+          <div class="rounded-xl border border-blue-100 bg-blue-50 p-4">
+            <p class="text-sm font-semibold text-blue-700">Izin</p>
+            <p class="mt-2 text-2xl font-bold text-blue-900">1</p>
+          </div>
+
+          <div class="rounded-xl border border-amber-100 bg-amber-50 p-4">
+            <p class="text-sm font-semibold text-amber-700">Sakit</p>
+            <p class="mt-2 text-2xl font-bold text-amber-900">1</p>
+          </div>
+
+          <div class="rounded-xl border border-rose-100 bg-rose-50 p-4">
+            <p class="text-sm font-semibold text-rose-700">Alpha</p>
+            <p class="mt-2 text-2xl font-bold text-rose-900">1</p>
+          </div>
+        </div>
+
+        <div class="mt-6 rounded-xl border border-gray-200">
+          <div class="border-b border-gray-100 px-5 py-4">
+            <h3 class="text-base font-bold text-gray-900">
+              Santri yang Perlu Diperhatikan
+            </h3>
+            <p class="mt-1 text-sm text-gray-500">
+              Daftar ini membantu ustadz mengecek ulang santri yang tidak berstatus hadir.
+            </p>
+          </div>
+
+          <div class="divide-y divide-gray-100">
+            <div class="flex flex-col gap-2 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p class="font-semibold text-gray-900">M. Fauzan</p>
+                <p class="mt-1 text-sm text-gray-500">Izin pulang karena keperluan keluarga</p>
+              </div>
+              <span class="w-fit rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-700">
+                Izin
+              </span>
+            </div>
+
+            <div class="flex flex-col gap-2 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p class="font-semibold text-gray-900">Abdul Halim</p>
+                <p class="mt-1 text-sm text-gray-500">Sakit di kamar dan sudah dicatat pengurus kesehatan</p>
+              </div>
+              <span class="w-fit rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-700">
+                Sakit
+              </span>
+            </div>
+
+            <div class="flex flex-col gap-2 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p class="font-semibold text-gray-900">Rafi Maulana</p>
+                <p class="mt-1 text-sm text-gray-500">Tidak ditemukan data izin atau sakit</p>
+              </div>
+              <span class="w-fit rounded-full bg-rose-100 px-3 py-1 text-xs font-bold text-rose-700">
+                Alpha
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5 rounded-xl border border-emerald-100 bg-emerald-50 px-4 py-3">
+          <p class="text-sm leading-6 text-gray-700">
+            <span class="font-bold text-madigi-green">Catatan:</span>
+            Preview ini dibuat agar ustadz dapat mengecek ulang data absensi sebelum disimpan sebagai catatan resmi.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex flex-col-reverse gap-3 border-t border-gray-100 px-6 py-4 sm:flex-row sm:justify-end">
+        <button
+          id="backEditFromPreview"
+          type="button"
+          class="h-10 rounded-lg border border-gray-200 bg-white px-5 text-sm font-semibold text-gray-700 hover:bg-gray-50"
+        >
+          Kembali Edit
+        </button>
+
+        <button
+          id="saveAttendanceButton"
+          type="button"
+          class="h-10 rounded-lg bg-madigi-green px-5 text-sm font-semibold text-white hover:bg-madigi-dark"
+        >
+          Simpan Absensi
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL BERHASIL SIMPAN -->
+  <div
+    id="successModal"
+    class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/40 px-4"
+  >
+    <div class="w-full max-w-md rounded-2xl bg-white shadow-xl">
+      <div class="px-6 py-8 text-center">
+        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-3xl text-emerald-700">
+          ✓
+        </div>
+
+        <h2 class="mt-5 text-2xl font-bold text-gray-900">
+          Absensi Berhasil Disimpan
+        </h2>
+
+        <p class="mt-3 text-sm leading-6 text-gray-600">
+          Absensi kelas <span class="font-semibold text-gray-900">AWWALIYAH 2-1 Putra</span>
+          untuk jadwal <span class="font-semibold text-gray-900">Nahwu - Imrithi</span>
+          berhasil disimpan secara simulatif.
+        </p>
+
+        <div class="mt-5 rounded-xl border border-gray-100 bg-gray-50 px-4 py-3 text-left">
+          <p class="text-sm font-semibold text-gray-900">
+            Ringkasan Absensi
+          </p>
+          <div class="mt-3 grid grid-cols-4 gap-2 text-center text-xs font-semibold">
+            <div class="rounded-lg bg-emerald-100 px-2 py-2 text-emerald-700">
+              H 22
+            </div>
+            <div class="rounded-lg bg-blue-100 px-2 py-2 text-blue-700">
+              I 1
+            </div>
+            <div class="rounded-lg bg-amber-100 px-2 py-2 text-amber-700">
+              S 1
+            </div>
+            <div class="rounded-lg bg-rose-100 px-2 py-2 text-rose-700">
+              A 1
+            </div>
+          </div>
+        </div>
+
+        <p class="mt-4 text-xs text-gray-400">
+          Waktu simpan: 19 Mei 2026, 05:58 WIB
+        </p>
+      </div>
+
+      <div class="border-t border-gray-100 px-6 py-4">
+        <button
+          id="backToDashboardAfterSave"
+          type="button"
+          class="h-11 w-full rounded-lg bg-madigi-green px-5 text-sm font-semibold text-white hover:bg-madigi-dark"
+        >
+          Kembali ke Dashboard
+        </button>
+      </div>
     </div>
   </div>
 
