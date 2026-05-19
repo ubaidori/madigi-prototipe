@@ -7,7 +7,8 @@
   <link rel="stylesheet" href="./dist/output.css" />
 </head>
 <body class="min-h-screen bg-white text-gray-900">
-  <main class="flex min-h-screen items-center justify-center px-6">
+  <!-- LOGIN SCREEN -->
+  <main id="loginScreen" class="flex min-h-screen items-center justify-center px-6">
     <section class="w-full max-w-[420px]">
       <div class="flex flex-col items-center text-center">
         <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-madigi-soft ring-2 ring-madigi-green/20">
@@ -61,6 +62,178 @@
       </p>
     </section>
   </main>
+
+  <!-- APP SCREEN -->
+  <div id="appScreen" class="hidden min-h-screen bg-white">
+    <!-- MOBILE TOPBAR -->
+    <header class="flex h-16 items-center justify-between border-b border-gray-100 px-5 md:hidden">
+      <button
+        id="openSidebar"
+        type="button"
+        class="flex h-9 w-9 items-center justify-center rounded-lg text-gray-600 hover:bg-gray-100"
+        aria-label="Buka menu"
+      >
+        ☰
+      </button>
+
+      <span class="text-sm font-medium text-gray-500">
+        Dashboard
+      </span>
+
+      <button
+        type="button"
+        class="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100"
+        aria-label="Menu pengguna"
+      >
+       ⌄
+      </button>
+    </header>
+
+    <!-- MOBILE SIDEBAR OVERLAY -->
+    <div id="sidebarOverlay" class="fixed inset-0 z-40 hidden bg-black/30 md:hidden"></div>
+
+    <!-- LAYOUT -->
+    <div class="flex min-h-screen">
+      <!-- SIDEBAR -->
+      <aside
+        id="sidebar"
+        class="fixed inset-y-0 left-0 z-50 w-[285px] -translate-x-full border-r border-gray-200 bg-white transition-transform duration-200 md:static md:translate-x-0"
+      >
+        <div class="flex h-full flex-col px-5 py-6">
+          <div class="mb-8 flex items-center gap-3">
+            <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-madigi-soft ring-2 ring-madigi-green/20">
+              <span class="text-sm font-bold text-madigi-dark">MA</span>
+            </div>
+            <h2 class="text-base font-bold text-gray-900">
+              PP. Mathali'ul Anwar
+            </h2>
+          </div>
+
+          <nav class="flex-1 space-y-6 overflow-y-auto">
+            <div>
+              <p class="mb-2 text-sm text-gray-400">Platform</p>
+              <button
+                type="button"
+                class="flex w-full items-center gap-3 rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-left text-sm font-semibold text-madigi-green shadow-sm"
+              >
+                <span>⌂</span>
+                <span>Dashboard</span>
+              </button>
+            </div>
+
+            <div>
+              <p class="mb-2 text-sm text-gray-400">Data Utama</p>
+              <div class="space-y-1">
+                <button class="flex w-full items-center gap-3 rounded-lg px-4 py-2.5 text-left text-sm font-medium text-gray-600 hover:bg-gray-50">
+                  <span>♙</span>
+                  <span>Santri</span>
+                </button>
+                <button class="flex w-full items-center gap-3 rounded-lg px-4 py-2.5 text-left text-sm font-medium text-gray-600 hover:bg-gray-50">
+                  <span>♙</span>
+                  <span>Alumni</span>
+                </button>
+                <button class="flex w-full items-center gap-3 rounded-lg px-4 py-2.5 text-left text-sm font-medium text-gray-600 hover:bg-gray-50">
+                  <span>▥</span>
+                  <span>Asrama</span>
+                </button>
+                <button class="flex w-full items-center gap-3 rounded-lg px-4 py-2.5 text-left text-sm font-medium text-gray-600 hover:bg-gray-50">
+                  <span>▤</span>
+                  <span>Kelas</span>
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <p class="mb-2 text-sm text-gray-400">Absensi</p>
+              <button
+                id="menuAbsensi"
+                type="button"
+                class="flex w-full items-center gap-3 rounded-lg px-4 py-2.5 text-left text-sm font-medium text-gray-600 hover:bg-gray-50"
+              >
+                <span>▣</span>
+                <span>Absensi Siswa</span>
+              </button>
+            </div>
+
+            <div>
+              <p class="mb-2 text-sm text-gray-400">Perizinan</p>
+              <button class="flex w-full items-center gap-3 rounded-lg px-4 py-2.5 text-left text-sm font-medium text-gray-600 hover:bg-gray-50">
+                <span>□</span>
+                <span>Daftar Perizinan</span>
+              </button>
+            </div>
+
+            <div>
+              <p class="mb-2 text-sm text-gray-400">Pelanggaran</p>
+              <button class="flex w-full items-center gap-3 rounded-lg px-4 py-2.5 text-left text-sm font-medium text-gray-600 hover:bg-gray-50">
+                <span>□</span>
+                <span>Daftar Pelanggaran</span>
+              </button>
+            </div>
+          </nav>
+
+          <div class="pt-5 text-sm font-medium text-gray-600">
+            Ust. Ahmad
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="min-h-screen flex-1 px-6 py-8 md:px-10 lg:px-12">
+        <section id="dashboardScreen">
+          <div class="mb-6 hidden md:block">
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="Cari santri"
+                class="h-12 w-full rounded-lg border border-gray-200 px-4 pr-12 text-base outline-none transition placeholder:text-gray-400 focus:border-madigi-green focus:ring-4 focus:ring-madigi-green/10"
+              />
+              <span class="absolute right-4 top-1/2 -translate-y-1/2 text-xl text-gray-500">⌕</span>
+            </div>
+          </div>
+
+          <div class="mb-6 md:hidden">
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="Cari santri"
+                class="h-11 w-full rounded-lg border border-gray-200 px-4 pr-10 text-sm outline-none transition placeholder:text-gray-400 focus:border-madigi-green focus:ring-4 focus:ring-madigi-green/10"
+              />
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-lg text-gray-500">⌕</span>
+            </div>
+          </div>
+
+          <div class="grid gap-5 md:grid-cols-3">
+            <article class="relative overflow-hidden rounded-2xl border border-blue-100 bg-blue-50/70 p-7 shadow-sm">
+              <p class="text-base font-bold uppercase text-blue-700">Total Santri</p>
+              <p class="mt-16 text-4xl font-bold text-blue-900">698</p>
+              <div class="absolute bottom-6 right-7 text-6xl opacity-10">👥</div>
+            </article>
+
+            <article class="relative overflow-hidden rounded-2xl border border-emerald-100 bg-emerald-50/70 p-7 shadow-sm">
+              <p class="text-base font-bold uppercase text-emerald-800">Total Santri Putra</p>
+              <p class="mt-16 text-4xl font-bold text-emerald-900">329</p>
+              <div class="absolute bottom-6 right-7 text-6xl opacity-10">👦</div>
+            </article>
+
+            <article class="relative overflow-hidden rounded-2xl border border-pink-100 bg-pink-50/70 p-7 shadow-sm">
+              <p class="text-base font-bold uppercase text-pink-700">Total Santri Putri</p>
+              <p class="mt-16 text-4xl font-bold text-pink-900">369</p>
+              <div class="absolute bottom-6 right-7 text-6xl opacity-10">👧</div>
+            </article>
+          </div>
+
+          <div class="mt-5 rounded-2xl border border-gray-200 bg-[repeating-linear-gradient(135deg,#fafafa_0,#fafafa_4px,#f1f1f1_4px,#f1f1f1_6px)] p-6 md:min-h-[420px]">
+            <div class="rounded-xl bg-white/70 p-5">
+              <p class="text-sm font-semibold text-gray-500">
+                Area ringkasan aktivitas akan digunakan untuk menampilkan jadwal dan status absensi pada prototype.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
 
   <script src="./js/app.js"></script>
 </body>
